@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Quality Prediction</title>
+    <link rel="stylesheet" href="{% static 'front_end.css' %}">
+
+</head>
+<body>
+    <divclass="main-content">
+
+        <header>
+            <h1>Diamond Quality Prediction</h1>
+            <p>Welcome to our Diamond Quality Prediction Tool. Use this form to estimate the quality of a diamond based on its characteristics. Our state-of-the-art algorithm predicts quality with high accuracy, helping you make informed decisions.</p>
+        </header>
+        <form action="{% url 'api_endpoint' %}" method="post">
+            {% csrf_token %}
+            <!-- Carat -->
+            <label for="carat">Carat:</label>
+            <input type="number" id="carat" name="carat" step="0.1" min="0.2" max="5">
+    
+            <!-- Clarity -->
+            <label for="clarity">Clarity:</label>
+            <select id="clarity" name="clarity">
+                <option value="I1">I1</option>
+                <option value="SI1">SI1</option>
+                <option value="VS1">VS1</option>
+                <option value="VVS1">VVS1</option>
+                <option value="IF">IF</option>
+            </select>
+    
+            <!-- Cut -->
+            <label for="cut">Cut:</label>
+            <select id="cut" name="cut">
+                <option value="Poor">Poor</option>
+                <option value="Fair">Fair</option>
+                <option value="Good">Good</option>
+                <option value="Very Good">Very Good</option>
+                <option value="Excellent">Excellent</option>
+            </select>
+    
+            <!-- Color -->
+            <label for="color">Color:</label>
+            <select id="color" name="color">
+                <option value="J">J</option>
+                <option value="I">I</option>
+                <option value="H">H</option>
+                <option value="G">G</option>
+                <option value="F">F</option>
+                <option value="E">E</option>
+                <option value="D">D</option>
+                <option value="C">C</option>
+                <option value="B">B</option>
+                <option value="A">A</option>
+            </select>
+    
+            <!-- Depth -->
+            <label for="depth">Depth:</label>
+            <input type="number" id="depth" name="depth" step="0.1" min="55" max="70">
+    
+            <!-- Table -->
+            <label for="table">Table:</label>
+            <input type="number" id="table" name="table" step="0.1" min="54" max="64">
+    
+            <input type="submit" value="Predict Quality">
+        </form>
+
+    </div>
+    
+    <footer>
+        <p>For more information or queries, contact <a href="mailto:info@mosia.com">info@mosia.com</a></p>
+    </footer>
+</body>
+</html>
