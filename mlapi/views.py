@@ -38,6 +38,6 @@ def mlapi_views(request):
         table = request.POST.get('table')
         clarity, cut, color = convert_to_numeric(clarity, cut, color)
         print(f"Carat: {carat}, Clarity: {clarity}, Cut: {cut}, Color: {color}, Depth: {depth}, Table: {table}")
-
+        X = [carat, clarity, cut, color, depth, table]
 
     return Response({'data': request.data})
