@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   app:
@@ -11,16 +11,16 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgres://yourusername:yourpassword@db:5432/yourdbname
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
 
   db:
     image: postgres:latest
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=yourdbname
-      - POSTGRES_USER=yourusername
-      - POSTGRES_PASSWORD=yourpassword
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
 volumes:
   pgdata:
