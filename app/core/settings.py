@@ -72,16 +72,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 #     }
 # }
 
+import os
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'yourdbname',
-        'USER': 'yourusername',
-        'PASSWORD': 'yourpassword',
-        'HOST': 'db', 
-        'PORT': '5432',
+        'NAME': os.environ.get('POSTGRES_DB', 'default_dbname'),
+        'USER': os.environ.get('POSTGRES_USER', 'default_username'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'default_password'),
+        'HOST': os.environ.get('HOST', 'localhost'), 
+        'PORT': os.environ.get('PORT', '5432'),
     }
 }
+
 
 
 # Password validation

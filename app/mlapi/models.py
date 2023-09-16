@@ -83,5 +83,15 @@ class Diamond(models.Model):
         default=54
     )
 
+    # Prediction
+    prediction = models.IntegerField(
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(3)
+        ],
+        null=True, 
+        blank=True
+    )
+
     def __str__(self):
         return f"Diamond {self.pk} - {self.carat} carat"
